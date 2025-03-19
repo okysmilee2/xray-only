@@ -26,7 +26,7 @@ commonname=none
 email=none
 
 # simple password minimal
-#curl -sS https://raw.githubusercontent.com/okysmilee2/new/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+#curl -sS https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 #chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -138,8 +138,8 @@ install_ssl(){
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-curl https://raw.githubusercontent.com/okysmilee2/new/main/install/nginx.conf > /etc/nginx/nginx.conf
-curl https://raw.githubusercontent.com/okysmilee2/new/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
+curl https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/nginx.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/vps.conf > /etc/nginx/conf.d/vps.conf
 sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
@@ -147,7 +147,7 @@ echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/okysmilee2/new/main/install/index.html1"
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/index.html1"
 /etc/init.d/nginx restart
 cd
 
@@ -179,7 +179,7 @@ cd
 
 # install squid for debian 11
 #apt -y install squid
-#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/okysmilee2/new/main/install/squid3.conf"
+#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/squid3.conf"
 #sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -238,10 +238,10 @@ rm -rf /root/vnstat-2.6
 #/etc/init.d/stunnel4 restart
 
 #OpenVPN
-#wget https://raw.githubusercontent.com/okysmilee2/new/main/install/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+#wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
-wget https://raw.githubusercontent.com/okysmilee2/new/main/install/lolcat.sh && chmod +x lolcat.sh && ./lolcat.sh
+wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/lolcat.sh && chmod +x lolcat.sh && ./lolcat.sh
 
 # memory swap 1gb
 cd
@@ -287,10 +287,10 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 #sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Ganti Banner
-#wget -O /etc/issue.net "https://raw.githubusercontent.com/okysmilee2/new/main/install/issue.net"
+#wget -O /etc/issue.net "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/issue.net"
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/okysmilee2/new/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 # blokir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -314,11 +314,11 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-#wget -O issue "https://raw.githubusercontent.com/okysmilee2/new/main/install/issue.net"
-wget -O m-theme "https://raw.githubusercontent.com/okysmilee2/new/main/menu/m-theme.sh"
-wget -O speedtest "https://raw.githubusercontent.com/okysmilee2/new/main/speedtest_cli.py"
-wget -O xp "https://raw.githubusercontent.com/okysmilee2/new/main/install/xp.sh"
-#wget -O m-noobz "https://raw.githubusercontent.com/okysmilee2/new/main/menu/m-noobz.sh"
+#wget -O issue "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/issue.net"
+wget -O m-theme "https://raw.githubusercontent.com/okysmilee2/xray-only/main/menu/m-theme.sh"
+wget -O speedtest "https://raw.githubusercontent.com/okysmilee2/xray-only/main/speedtest_cli.py"
+wget -O xp "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/xp.sh"
+#wget -O m-noobz "https://raw.githubusercontent.com/okysmilee2/xray-only/main/menu/m-noobz.sh"
 
 #chmod +x issue
 chmod +x m-theme
