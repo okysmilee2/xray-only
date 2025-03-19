@@ -2,16 +2,16 @@
 
 apt install rclone
 printf "q\n" | rclone config
-wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/denisa325/new/main/install/rclone.conf"
+wget -O /root/.config/rclone/rclone.conf "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/rclone.conf"
 git clone https://github.com/casper9/wondershaper.git
 cd wondershaper
 make install
 cd
 rm -rf wondershaper
 cd /usr/bin
-wget -O backup "https://raw.githubusercontent.com/denisa325/new/main/menu/backup.sh"
-wget -O restore "https://raw.githubusercontent.com/denisa325/new/main/menu/restore.sh"
-wget -O cleaner "https://raw.githubusercontent.com/denisa325/new/main/install/cleaner.sh"
+wget -O backup "https://raw.githubusercontent.com/okysmilee2/xray-only/main/menu/backup.sh"
+wget -O restore "https://raw.githubusercontent.com/okysmilee2/xray-only/main/menu/restore.sh"
+wget -O cleaner "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/cleaner.sh"
 chmod +x /usr/bin/backup
 chmod +x /usr/bin/restore
 chmod +x /usr/bin/cleaner
@@ -49,7 +49,7 @@ service cron restart > /dev/null 2>&1
 
 # > Pasang Limit
 
-#wget "https://raw.githubusercontent.com/denisa325/new/main/bin/limit.sh" >/dev/null 2>&1
+#wget "https://raw.githubusercontent.com/okysmilee2/xray-only/main/bin/limit.sh" >/dev/null 2>&1
 
 #chmod +x limit.sh && bash limit.sh >/dev/null 2>&1
     
