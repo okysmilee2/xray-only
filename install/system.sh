@@ -24,12 +24,6 @@ organization=none
 organizationalunit=none
 commonname=none
 email=none
-
-# simple password minimal
-#curl -sS https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
-#chmod +x /etc/pam.d/common-password
-
-# go to root
 cd
 
 # Edit file /etc/systemd/system/rc-local.service
@@ -91,8 +85,7 @@ gem install lolcat
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
-# set locale
-sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+
 
 # // install
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
@@ -151,37 +144,6 @@ wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/okys
 /etc/init.d/nginx restart
 cd
 
-
-# setting port ssh
-#cd
-#sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 40000' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 51443' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
-#sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
-#/etc/init.d/ssh restart
-
-#echo "=== Install Dropbear ==="
-# install dropbear
-#apt -y install dropbear
-#sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-#sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-#sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
-#echo "/bin/false" >> /etc/shells
-#echo "/usr/sbin/nologin" >> /etc/shells
-#/etc/init.d/ssh restart
-#/etc/init.d/dropbear restart
-
-# // install squid for debian 9,10 & ubuntu 20.04
-#apt -y install squid3
-
-# install squid for debian 11
-#apt -y install squid
-#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/squid3.conf"
-#sed -i $MYIP2 /etc/squid/squid.conf
-
 # setting vnstat
 apt -y install vnstat
 /etc/init.d/vnstat restart
@@ -198,47 +160,6 @@ systemctl enable vnstat
 /etc/init.d/vnstat restart
 rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
-
-#cd
-# install stunnel
-#apt install stunnel4 -y
-#cat > /etc/stunnel/stunnel.conf <<-END
-#cert = /etc/stunnel/stunnel.pem
-#client = no
-#socket = a:SO_REUSEADDR=1
-#socket = l:TCP_NODELAY=1
-#socket = r:TCP_NODELAY=1
-
-#[dropbear]
-#accept = 8880
-#connect = 127.0.0.1:22
-
-#[dropbear]
-#accept = 8443
-#connect = 127.0.0.1:109
-
-#[ws-stunnel]
-#accept = 444
-#connect = 700
-
-#[openvpn]
-#accept = 442
-#connect = 127.0.0.1:1194
-
-#END
-
-# make a certificate
-#openssl genrsa -out key.pem 2048
-#openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
-#-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-#cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
-
-# konfigurasi stunnel
-#sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-#/etc/init.d/stunnel4 restart
-
-#OpenVPN
-#wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
 wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/lolcat.sh && chmod +x lolcat.sh && ./lolcat.sh
@@ -281,13 +202,6 @@ echo '.....done'
 echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
-
-# banner /etc/issue.net
-#echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
-#sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
-# Ganti Banner
-#wget -O /etc/issue.net "https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/issue.net"
 
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/okysmilee2/xray-only/main/install/bbr.sh && chmod +x bbr.sh && ./bbr.sh
